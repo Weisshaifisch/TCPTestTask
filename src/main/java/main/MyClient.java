@@ -30,11 +30,13 @@ public class MyClient {
 
 		@Override
 		public void run() {
-			try {
-				this.client.remoteCall("service1", "sleep", new Object[] {new Long(1000)});
-				logger.info("Current date is: " + this.client.remoteCall("service1", "getCurrentDate", new Object[]{}));
-			} catch (Exception e) {
-				logger.error(e.getMessage());
+			while (true) {
+				try {
+					this.client.remoteCall("service1", "sleep", new Object[] {new Long(1000)});
+					logger.info("Current date is: " + this.client.remoteCall("service1", "getCurrentDate", new Object[]{}));
+				} catch (Exception e) {
+					logger.error(e.getMessage());
+				}
 			}
 		}
 	}
